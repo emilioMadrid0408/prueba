@@ -45,9 +45,10 @@ public class AppJiCuadrada {
             oMenosE = observadosActual - E;
             System.out.println(intervaloSuperiorActual + "\t\t" + observadosActual+ "\t\t" + E+ "\t\t" + oMenosE);
             // System.out.printf("%.1f%n", intervaloSuperiorActual);
-   
+           //esta es una pruebita
             intervaloInferiorActual += 0.1f;
             intervaloSuperiorActual += 0.1f;
+            
 
         }
         

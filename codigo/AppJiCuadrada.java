@@ -42,10 +42,12 @@ public class AppJiCuadrada {
         double oMenosE=0;
         for (int i = 0; i < 10; i++) {
             observadosActual = calcularObservados(intervaloInferiorActual, intervaloSuperiorActual);
+            
             oMenosE = observadosActual - E;
-            System.out.println(intervaloSuperiorActual + "\t\t" + observadosActual+ "\t\t" + E+ "\t\t" + oMenosE);
+            System.out.printf("%.1f\t\t%d\t\t%.1f\t\t%.1f%n", intervaloSuperiorActual, observadosActual, E, oMenosE);
+            //System.out.println(intervaloSuperiorActual + "\t\t" + observadosActual+ "\t\t" + E+ "\t\t" + oMenosE);
             // System.out.printf("%.1f%n", intervaloSuperiorActual);
-           //esta es una pruebita
+           
             intervaloInferiorActual += 0.1f;
             intervaloSuperiorActual += 0.1f;
             

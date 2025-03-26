@@ -1,5 +1,6 @@
 package codigo;
 
+import java.util.Scanner;
 
 public class JiCuadrada {
 
@@ -16,10 +17,10 @@ public class JiCuadrada {
     public static final double N = 64;
 
     public JiCuadrada() {
-        
 
     }
-    public static void iniciarCalculo(){
+
+    public static void iniciarCalculo() {
         imprimirEncabezado();
         calcular();
     }
@@ -31,28 +32,36 @@ public class JiCuadrada {
     }
 
     public static void calcular() {
-      
+
         int observadosActual = 0;
         float intervaloInferiorActual = 0f;
         float intervaloSuperiorActual = 0.1f;
-        double E = N/10;
-        double oMenosE=0;
-        double oMenosECuadradoSobreE=0;
+        double E = N / 10;
+        double oMenosE = 0;
+        double oMenosECuadradoSobreE = 0;
+        double sumatoria = 0;
+        Scanner leer = new Scanner(System.in);
+        System.out.println("Ingrese el error:");
+        double error = leer.nextDouble();
         for (int i = 0; i < 10; i++) {
             observadosActual = calcularObservados(intervaloInferiorActual, intervaloSuperiorActual);
-            
+
             oMenosE = observadosActual - E;
-            oMenosECuadradoSobreE = ((observadosActual-E)*((observadosActual-E)))/E;
-            System.out.printf("%.1f\t\t%d\t\t%.1f\t\t%.1f%n", intervaloSuperiorActual, observadosActual, E, oMenosE,oMenosECuadradoSobreE);
-            //System.out.println(intervaloSuperiorActual + "\t\t" + observadosActual+ "\t\t" + E+ "\t\t" + oMenosE);
+            oMenosECuadradoSobreE = ((observadosActual - E) * (observadosActual - E)) / E;
+            System.out.printf("%.1f\t\t%d\t\t%.1f\t\t%.1f\t\t%.1f%n",
+                    intervaloSuperiorActual, observadosActual, E, oMenosE, oMenosECuadradoSobreE);
+
+            // System.out.println(intervaloSuperiorActual + "\t\t" + observadosActual+
+            // "\t\t" + E+ "\t\t" + oMenosE);
             // System.out.printf("%.1f%n", intervaloSuperiorActual);
-           
+            sumatoria += oMenosECuadradoSobreE;
             intervaloInferiorActual += 0.1f;
             intervaloSuperiorActual += 0.1f;
-            
 
         }
-        
+
+        concluir(sumatoria, error);
+
     }
 
     public static int calcularObservados(float intervaloInferiorActual, float intervaloSuperiorActual) {
@@ -63,6 +72,18 @@ public class JiCuadrada {
             }
         }
         return observados;
+
+    }
+
+    public static void concluir(double sumatoria, double error) {
+
+        if (sumatoria == 0) {
+
+        }
+
+    }
+
+    public static void buscarJiCuadrada(double sumatoria) {
 
     }
 

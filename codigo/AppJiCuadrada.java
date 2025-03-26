@@ -8,15 +8,11 @@ import codigo.*;
 
 public class AppJiCuadrada {
 
-   
-    public static final double N = 64;
+
 
     public static void main(String[] args) {
         JiCuadrada jicuadrada = new JiCuadrada();
         JiCuadrada.iniciarCalculo();
-    
-        //imprimirEncabezado();
-        //calcular();
 
     }
 

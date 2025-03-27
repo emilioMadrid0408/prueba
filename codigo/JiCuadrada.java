@@ -89,7 +89,7 @@ public class JiCuadrada {
 
         }
 
-        concluir(sumatoria, error,numeroDeIntervalos);
+        concluir(sumatoria, error, numeroDeIntervalos);
 
     }
 
@@ -105,49 +105,52 @@ public class JiCuadrada {
     }
 
     public static void concluir(double sumatoria, double error, double numeroDeIntervalos) {
-        //double numeroDeIntervalos=0;
-            int posicionError = 0;
-            if (error == 0.001) {
-                posicionError = 0;
-            } else if (error == 0.0025) {
-                posicionError = 1;
-            } else if (error == 0.005) {
-                posicionError = 2;
-            } else if (error == 0.01) {
-                posicionError = 3;
-            } else if (error == 0.025) {
-                posicionError = 4;
-            } else if (error == 0.05) {
-                posicionError = 5;
-            } else if (error == 0.1) {
-                posicionError = 6;
-            } else if (error == 0.15) {
-                posicionError = 7;
-            } else if (error == 0.2) {
-                posicionError = 8;
-            } else if (error == 0.25) {
-                posicionError = 9;
-            } else if (error == 0.3) {
-                posicionError = 10;
-            } else if (error == 0.35) {
-                posicionError = 11;
-            } else if (error == 0.4) {
-                posicionError = 12;
-            } else if (error == 0.45) {
-                posicionError = 13;
-            } else if (error == 0.5) {
-                posicionError = 14;
-            }
-                System.out.println("La sumatoria de (O-E)2/E es: " + sumatoria);
-       
-                int fila = (int) Math.round(sumatoria);
-                double jicuadradaValor = JiCuadradaTabla[(int) (numeroDeIntervalos-1)][fila];
-            System.out.println(posicionError + " " + fila);
-            System.out.println("Ji CUadrada es: " + jicuadradaValor);
-            if (sumatoria < jicuadradaValor) {
-                System.out.println(
-                        "Conclusion : No hay pruebas suficientes para determinar que los numeros NO estan distribuidos uniformemente ");
-            }
+        // double numeroDeIntervalos=0;
+        int posicionError = 0;
+        if (error == 0.001) {
+            posicionError = 0;
+        } else if (error == 0.0025) {
+            posicionError = 1;
+        } else if (error == 0.005) {
+            posicionError = 2;
+        } else if (error == 0.01) {
+            posicionError = 3;
+        } else if (error == 0.025) {
+            posicionError = 4;
+        } else if (error == 0.05) {
+            posicionError = 5;
+        } else if (error == 0.1) {
+            posicionError = 6;
+        } else if (error == 0.15) {
+            posicionError = 7;
+        } else if (error == 0.2) {
+            posicionError = 8;
+        } else if (error == 0.25) {
+            posicionError = 9;
+        } else if (error == 0.3) {
+            posicionError = 10;
+        } else if (error == 0.35) {
+            posicionError = 11;
+        } else if (error == 0.4) {
+            posicionError = 12;
+        } else if (error == 0.45) {
+            posicionError = 13;
+        } else if (error == 0.5) {
+            posicionError = 14;
         }
+        System.out.println("La sumatoria de (O-E)2/E es: " + sumatoria);
 
+        int fila = (int) Math.round(sumatoria);
+        double jicuadradaValor = JiCuadradaTabla[(int) (numeroDeIntervalos - 2)][posicionError];
+        System.out.println("Ji CUadrada es: " + jicuadradaValor);
+        if (sumatoria < jicuadradaValor) {
+            System.out.println(
+                    "Conclusion : NO hay pruebas suficientes para determinar que los numeros NO estan distribuidos uniformemente ");
+        } else {
+            System.out.println(
+                    "Conclusion : NO hay pruebas suficientes para determinar que los numeros SI estan distribuidos uniformemente ");
+
+        }
     }
+
+}

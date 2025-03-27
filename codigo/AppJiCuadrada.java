@@ -4,15 +4,17 @@ import java.io.FileReader;
 
 import javax.swing.JOptionPane;
 
-import codigo.*;
+
 
 public class AppJiCuadrada {
 
 
 
     public static void main(String[] args) {
-        JiCuadrada jicuadrada = new JiCuadrada();
-        JiCuadrada.iniciarCalculo();
+        JiCuadradaCopy jiCuadradaCopy = new JiCuadradaCopy();
+        JiCuadradaCopy.iniciarCalculo();
+        //JiCuadrada jicuadrada = new JiCuadrada();
+        //JiCuadrada.iniciarCalculo();
 
     }
 

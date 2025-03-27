@@ -2,7 +2,7 @@ package codigo;
 
 import java.util.Scanner;
 
-public class JiCuadrada {
+public class JiCuadradaCopy {
 
     public static double[] VALORES = {
             0.0619, 0.0824, 0.0856, 0.0994, 0.125, 0.1294, 0.1487, 0.1573, 0.1599,
@@ -16,13 +16,19 @@ public class JiCuadrada {
     };
     public static final double N = 64;
 
-    public JiCuadrada() {
+    public JiCuadradaCopy() {
 
     }
 
     public static void iniciarCalculo() {
+        Scanner leer = new Scanner(System.in);
+        System.out.println("Ingrese el error:");
+        double error = leer.nextDouble();
+        System.out.println("Ingrese el numero de intervalos:");
+
+        double numeroDeIntervalos = leer.nextDouble();
         imprimirEncabezado();
-        calcular();
+        calcular(error, numeroDeIntervalos);
     }
 
     public static void imprimirEncabezado() {
@@ -31,32 +37,32 @@ public class JiCuadrada {
                 "");
     }
 
-    public static void calcular() {
+    public static void calcular(double error, double numeroDeIntervalos) {
 
         int observadosActual = 0;
-        float intervaloInferiorActual = 0f;
-        float intervaloSuperiorActual = 0.1f;
-        double E = N / 10;
+        double intervaloInferiorActual = 0f;
+        double intervaloSuperiorActual = 0f;
         double oMenosE = 0;
         double oMenosECuadradoSobreE = 0;
         double sumatoria = 0;
-        Scanner leer = new Scanner(System.in);
-        System.out.println("Ingrese el error:");
-        double error = leer.nextDouble();
-        for (int i = 0; i < 10; i++) {
+        double deltaIntervalo = 0;
+        deltaIntervalo = 1 / numeroDeIntervalos;
+        double E = 64 / numeroDeIntervalos;
+        for (int i = 0; i < numeroDeIntervalos; i++) {
+            intervaloSuperiorActual = intervaloInferiorActual + deltaIntervalo;
             observadosActual = calcularObservados(intervaloInferiorActual, intervaloSuperiorActual);
 
             oMenosE = observadosActual - E;
             oMenosECuadradoSobreE = ((observadosActual - E) * (observadosActual - E)) / E;
-            System.out.printf("%.1f\t\t%d\t\t%.1f\t\t%.1f\t\t%.1f%n",
+            System.out.printf("%.3f\t\t%d\t\t%.1f\t\t%.1f\t\t%.1f%n",
                     intervaloSuperiorActual, observadosActual, E, oMenosE, oMenosECuadradoSobreE);
 
             // System.out.println(intervaloSuperiorActual + "\t\t" + observadosActual+
             // "\t\t" + E+ "\t\t" + oMenosE);
             // System.out.printf("%.1f%n", intervaloSuperiorActual);
             sumatoria += oMenosECuadradoSobreE;
-            intervaloInferiorActual += 0.1f;
-            intervaloSuperiorActual += 0.1f;
+            intervaloInferiorActual += deltaIntervalo;
+            intervaloSuperiorActual += deltaIntervalo;
 
         }
 
@@ -64,7 +70,7 @@ public class JiCuadrada {
 
     }
 
-    public static int calcularObservados(float intervaloInferiorActual, float intervaloSuperiorActual) {
+    public static int calcularObservados(double intervaloInferiorActual, double intervaloSuperiorActual) {
         int observados = 0;
         for (int i = 0; i < VALORES.length; i++) {
             if (VALORES[i] >= intervaloInferiorActual && VALORES[i] <= intervaloSuperiorActual) {
@@ -76,8 +82,8 @@ public class JiCuadrada {
     }
 
     public static void concluir(double sumatoria, double error) {
-        
-        if (Math.round(sumatoria) ==0) {
+
+        if (Math.round(sumatoria) == 0) {
 
         }
 

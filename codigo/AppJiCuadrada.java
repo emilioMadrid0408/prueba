@@ -11,10 +11,9 @@ public class AppJiCuadrada {
 
 
     public static void main(String[] args) {
-        JiCuadradaCopy jiCuadradaCopy = new JiCuadradaCopy();
-        JiCuadradaCopy.iniciarCalculo();
-        //JiCuadrada jicuadrada = new JiCuadrada();
-        //JiCuadrada.iniciarCalculo();
+       
+        JiCuadrada jicuadrada = new JiCuadrada();
+        JiCuadrada.iniciarCalculo();
 
     }
 

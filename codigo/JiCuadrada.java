@@ -164,7 +164,7 @@ public class JiCuadrada {
 
     public static void leerArchivo() {
         System.out.println("Que archivo desea leer?");
-        System.out.println("1) datos (1).csv");
+        System.out.println("1) datos.csv");
         System.out.println("2) Pruebas2.csv");
         System.out.println("3) pruebas3.csv");
         System.out.println("4) Salir");
@@ -175,7 +175,7 @@ public class JiCuadrada {
         String archivo = null;
         switch (numArchivo) {
             case 1:
-                archivo = "datos (1).csv";
+                archivo = "datos.csv";
                 break;
             case 2:
                 archivo = "Pruebas2.csv";

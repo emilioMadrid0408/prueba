@@ -9,7 +9,7 @@ public class AppPrincipal {
         System.out.println("1)  Xi Cuadrada");
         System.out.println("2)  Kolmogorov");
         System.out.println("3)  ");
-        System.out.println("1)  ");
+        System.out.println("4)  Distancias");
 
         Scanner leer = new Scanner(System.in);
         int numPrueba = leer.nextInt();
@@ -22,6 +22,10 @@ public class AppPrincipal {
             case 2:
                 Kolmogorov kolmogorov = new Kolmogorov();
                 kolmogorov.iniciarCalculo();
+                break;
+            case 3:
+                Distancias distancias = new Distancias();
+                distancias.iniciarCalculo();
                 break;
             default:
                 break;

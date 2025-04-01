@@ -23,7 +23,7 @@ public class AppPrincipal {
                 Kolmogorov kolmogorov = new Kolmogorov();
                 kolmogorov.iniciarCalculo();
                 break;
-            case 3:
+            case 4:
                 Distancias distancias = new Distancias();
                 distancias.iniciarCalculo();
                 break;

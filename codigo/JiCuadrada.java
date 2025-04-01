@@ -1,9 +1,14 @@
 package codigo;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class JiCuadrada {
-
+    public static double[] arrayValores;
+    /* 
     public static double[] VALORES = {
             0.0619, 0.0824, 0.0856, 0.0994, 0.125, 0.1294, 0.1487, 0.1573, 0.1599,
             0.1627, 0.1658, 0.1676, 0.24, 0.2594, 0.2661, 0.2737, 0.274, 0.3109,
@@ -13,7 +18,7 @@ public class JiCuadrada {
             0.7604, 0.7652, 0.7821, 0.7901, 0.8017, 0.8049, 0.8086, 0.8097, 0.8135,
             0.8413, 0.8767, 0.8972, 0.9297, 0.9476, 0.9563, 0.9609, 0.9862, 0.9909,
             0.9928
-    };
+    };*/
     public static double[][] JiCuadradaTabla = {
             { 10.8274, 9.1404, 7.8794, 6.6349, 5.0239, 3.8415, 2.7055, 2.0722, 1.6424, 1.3233, 1.0742, 0.8735, 0.7083,
                     0.5707, 0.4549 },
@@ -37,7 +42,7 @@ public class JiCuadrada {
                     11.0971, 10.4737, 9.9418, 9.4372 }
     };
 
-    public static final double N = 64;
+ 
 
     public JiCuadrada() {
 
@@ -49,8 +54,9 @@ public class JiCuadrada {
         double error = leer.nextDouble();
         System.out.println("Ingrese el numero de intervalos:");
         int numeroDeIntervalos = leer.nextInt();
-
+        leerArchivo();
         imprimirEncabezado();
+        
         calcular(error, numeroDeIntervalos);
     }
 
@@ -92,11 +98,11 @@ public class JiCuadrada {
         concluir(sumatoria, error, numeroDeIntervalos);
 
     }
-
+   
     public static int calcularObservados(double intervaloInferiorActual, double intervaloSuperiorActual) {
         int observados = 0;
-        for (int i = 0; i < VALORES.length; i++) {
-            if (VALORES[i] >= intervaloInferiorActual && VALORES[i] <= intervaloSuperiorActual) {
+        for (int i = 0; i < arrayValores.length; i++) {
+            if (arrayValores[i] >= intervaloInferiorActual && arrayValores[i] <= intervaloSuperiorActual) {
                 observados++;
             }
         }
@@ -153,4 +159,72 @@ public class JiCuadrada {
         }
     }
 
+    // Declare arrayValores as a class-level variable
+    
+
+    public static void leerArchivo() {
+        System.out.println("Que archivo desea leer?");
+        System.out.println("1) datos (1).csv");
+        System.out.println("2) Pruebas2.csv");
+        System.out.println("3) pruebas3.csv");
+        System.out.println("4) Salir");
+
+        Scanner leer = new Scanner(System.in);
+        System.out.println("Elija una opcion:");
+        int numArchivo = leer.nextInt();
+        String archivo = null;
+        switch (numArchivo) {
+            case 1:
+                archivo = "datos (1).csv";
+                break;
+            case 2:
+                archivo = "Pruebas2.csv";
+                break;
+            case 3:
+                archivo = "pruebas3.csv";
+                break;
+            case 4:
+                System.out.println("Saliendo...");
+                return; // Exit the method if the user chooses to exit
+            default:
+                System.out.println("Opción no válida. Saliendo...");
+                return; // Exit the method if the user enters an invalid option
+        }
+        
+        
+        String linea;
+        String delimitador = ",";
+    
+        // Lista para almacenar los valores decimales
+        ArrayList<Double> listaValores = new ArrayList<>();
+    
+        try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
+            while ((linea = br.readLine()) != null) {
+                // Separar la línea por el delimitador
+                String[] tokens = linea.split(delimitador);
+    
+                for (String token : tokens) {
+                    token = token.trim();
+                    // Verificar que no esté vacío
+                    if (!token.isEmpty()) {
+                        try {
+                            // Convertir a double y añadir a la lista
+                            double valor = Double.parseDouble(token);
+                            listaValores.add(valor);
+                        } catch (NumberFormatException e) {
+                            // Ignorar valores no numéricos
+                        }
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    
+        // Asignar los valores leídos al arrayValores de clase
+        arrayValores = new double[listaValores.size()];
+        for (int i = 0; i < listaValores.size(); i++) {
+            arrayValores[i] = listaValores.get(i);
+        }
+    }
 }
